@@ -10,20 +10,56 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// todo あとで消す。初期データなので
-model User {
-  id    String @id
-  email String @unique
-  name  String?
-  posts Post[]
+
+model Customer {
+    id          String  @id
+    name        String
+    telephone   Int
+    order       Order[]
 }
 
-// todo あとで消す。初期データなので
-model Post {
+
+model Order {
+    id          String  @id
+    orderId     String
+    order       Customer    @relation(fields: [orderId], references: [id])
+    orderDtail  OrderDtail[]
+}
+
+
+model OrderDtail {
+    id              String  @id
+    withoutWasabi   Boolean
+    count           Int
+    orderId         String
+    order           Order    @relation(fields: [orderId], references: [id])
+    sushiId         String
+    sushi           Sushi    @relation(fields: [sushiId], references: [id])
+}
+
+
+model Sushi {
+  id    String @id
+    name        String
+    price       Int
+    orderDtail  OrderDtail[]
+    sushiSetToSushi  SushiSetToSushi[]
+}
+
+
+model SushiSetToSushi {
   id        String @id
-  title     String
-  content   String?
-  published Boolean? @default(false)
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  String?
+    count       Int
+    sushiId     String
+    sushi       Sushi    @relation(fields: [sushiId], references: [id])
+    sushiSetId  String
+    sushiSet    SushiSet    @relation(fields: [sushiSetId], references: [id])
+}
+
+
+model SushiSet {
+    id          String  @id
+    name        String
+    price       Int
+    sushiSetToSushi  SushiSetToSushi[]
 }
