@@ -10,56 +10,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-model Customer {
+model User {
     id          String  @id
-    name        String
-    telephone   Int
-    order       Order[]
+  email String @unique
+  name  String?
+  posts Post[]
 }
 
-
-model Order {
+model Post {
     id          String  @id
-    orderId     String
-    order       Customer    @relation(fields: [orderId], references: [id])
-    orderDtail  OrderDtail[]
-}
-
-
-model OrderDtail {
-    id              String  @id
-    withoutWasabi   Boolean
-    count           Int
-    orderId         String
-    order           Order    @relation(fields: [orderId], references: [id])
-    sushiId         String
-    sushi           Sushi    @relation(fields: [sushiId], references: [id])
-}
-
-
-model Sushi {
-    id          String  @id
-    name        String
-    price       Int
-    orderDtail  OrderDtail[]
-    sushiSetToSushi  SushiSetToSushi[]
-}
-
-
-model SushiSetToSushi {
-    id          String  @id
-    count       Int
-    sushiId     String
-    sushi       Sushi    @relation(fields: [sushiId], references: [id])
-    sushiSetId  String
-    sushiSet    SushiSet    @relation(fields: [sushiSetId], references: [id])
-}
-
-// ssss
-model SushiSet {
-    id          String  @id
-    name        String
-    price       Int
-    sushiSetToSushi  SushiSetToSushi[]
+  title     String
+  content   String?
+  published Boolean? @default(false)
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  String?
 }
