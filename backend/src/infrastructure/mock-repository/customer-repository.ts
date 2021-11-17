@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common/decorators/core';
-import { Customer } from 'src/domain/user/customer';
-import { CustomerId } from 'src/domain/user/customer-id';
-import { ICustomerRepository } from 'src/domain/user/__interface__/customer-repository-interface';
+import { Customer } from 'src/domain/customer/customer';
+import { CustomerId } from 'src/domain/customer/customer-id';
+import { ICustomerRepository } from 'src/domain/customer/__interface__/customer-repository-interface';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
