@@ -10,11 +10,11 @@ export class Customer extends AggregateRoot<ICustomerDomain, CustomerId> {
   public static restore(props: ICustomerDomain, id: CustomerId): Customer {
     return new Customer(props, id);
   }
-  public get name(): string {
+  public get name(): ICustomerDomain['name'] {
     return this.props.name;
   }
 
-  public get telephone(): number {
+  public get telephone(): ICustomerDomain['telephone'] {
     return this.props.telephone;
   }
 }
