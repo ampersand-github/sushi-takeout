@@ -9,7 +9,6 @@ export class DisallowNotExistIdService {
     /*
       ユーザーのuidが重複していたらエラーを出力する
     */
-
     const targetId = CustomerId.restore(userId);
     const allUser: Customer[] = await this.userRepository.findAll();
     const result = allUser.filter((one: Customer) => one.id.equals(targetId));

@@ -1,6 +1,6 @@
 import { CustomerId } from '../customer-id';
 
-describe('UserId', () => {
+describe('CustomerId', () => {
   it('createできる', () => {
     expect(CustomerId.create()).toEqual(expect.any(CustomerId));
   });
@@ -21,12 +21,4 @@ describe('UserId', () => {
       CustomerId.restore('test-id').equals(CustomerId.restore('not-equal-id')),
     ).toBe(false);
   });
-  /* todo
-  it('id(uuid)が同じだけどIDのクラスが違う', () => {
-    const postId = PostId.restore('test-id');
-    const userId = CustomerId.restore('test-id');
-    expect(postId).not.toEqual(userId);
-    expect(postId.equals(userId)).toBe(false);
-  });
- */
 });
