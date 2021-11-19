@@ -18,6 +18,7 @@ export class SushiSet extends AggregateRoot<ISushiSetDomain, SushiSetId> {
   public get price(): ISushiSetDomain['price'] {
     return this.props.price;
   }
+
   public get sushiList(): ISushiSetDomain['sushiList'] {
     return this.props.sushiList;
   }
