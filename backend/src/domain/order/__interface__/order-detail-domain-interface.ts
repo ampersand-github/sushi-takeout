@@ -1,5 +1,7 @@
+import { Sushi } from 'src/domain/sushi/sushi';
+
 export interface IOrderDetailDomain {
-  sushi: any; // todo Sushi
+  sushi: Sushi;
   withoutWasabi: boolean;
   count: number;
 }

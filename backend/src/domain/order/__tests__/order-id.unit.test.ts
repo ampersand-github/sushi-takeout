@@ -21,12 +21,4 @@ describe('OrderId', () => {
       OrderId.restore('test-id').equals(OrderId.restore('not-equal-id')),
     ).toBe(false);
   });
-  /* todo
-  it('id(uuid)が同じだけどIDのクラスが違う', () => {
-    const postId = PostId.restore('test-id');
-    const userId = OrderId.restore('test-id');
-    expect(postId).not.toEqual(userId);
-    expect(postId.equals(userId)).toBe(false);
-  });
- */
 });

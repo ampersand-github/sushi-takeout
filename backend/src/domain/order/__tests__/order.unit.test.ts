@@ -1,14 +1,15 @@
 import { Customer } from 'src/domain/customer/customer';
 import { IOrderDomain } from '../__interface__/order-domain-interface';
-import { OrderDetail } from '../orderDetail';
 import { Order } from '../order';
 import { OrderId } from '../order-id';
+import { OrderDetail } from '../order-detail';
+import { Sushi } from 'src/domain/sushi/sushi';
 
 const OrderProps: IOrderDomain = {
   customer: Customer.create({ name: 'name', telephone: 123 }),
   orderDetail: [
     OrderDetail.create({
-      sushi: '',
+      sushi: Sushi.create({ name: '干瓢', price: 100 }),
       withoutWasabi: false,
       count: 2,
     }),
